@@ -78,28 +78,30 @@ export const server = new FastMCP<FastMCPAuthSession>({
   },
 });
 
-const start = async () => {
-  /**
-   * Registers all tools to the FastMCP server.
-   */
-  registerTools(server);
+// Register tools immediately
+registerTools(server);
 
-  try {
-    /**
-     * Starts the server.
-     */
-    await server.start({
-      transportType: "httpStream",
-      httpStream: {
-        port: PORT,
-        endpoint: "/mcp",
-        stateless: true,
-      },
-    });
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
-};
+// Only start the server if not in Vercel environment
+// Vercel uses serverless functions, so we don't start a server there
+if (!process.env.VERCEL) {
+  const start = async () => {
+    try {
+      /**
+       * Starts the server.
+       */
+      await server.start({
+        transportType: "httpStream",
+        httpStream: {
+          port: PORT,
+          endpoint: "/mcp",
+          stateless: true,
+        },
+      });
+    } catch (err) {
+      console.error(err);
+      process.exit(1);
+    }
+  };
 
-start();
+  start();
+}

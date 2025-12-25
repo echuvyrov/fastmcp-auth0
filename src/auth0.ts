@@ -8,8 +8,10 @@ import { getOAuthProtectedResourceMetadataUrl } from "@modelcontextprotocol/sdk/
 import { FastMCPAuthSession } from "./types.js";
 
 const PORT = parseInt(process.env.PORT ?? "3001", 10);
-// MCP_SERVER_URL should be set to your ngrok URL when using ngrok (e.g., https://abc123.ngrok.io)
+// MCP_SERVER_URL should be set to your deployment URL when deployed
 // For local development, it defaults to http://localhost:PORT
+// For ngrok, set it to your ngrok URL (e.g., https://abc123.ngrok.io)
+// When deployed, set this to your production URL
 const MCP_SERVER_URL = process.env.MCP_SERVER_URL ?? `http://localhost:${PORT}`;
 const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN as string;
 const AUTH0_AUDIENCE = process.env.AUTH0_AUDIENCE as string;
