@@ -9,6 +9,11 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 
+# Compiled files in api directory (Vercel compiles these automatically)
+api/**/*.js
+api/**/*.d.ts
+api/**/*.d.ts.map
+
 # Optional npm cache directory
 .npm
 
@@ -84,3 +89,5 @@ env/
 
 # Auth0 application configuration file created during quickstart setup
 auth0-app-details.json
+.vercel
+.env*.local
