@@ -4,7 +4,11 @@
   "description": "Example implementation of an MCP server using FastMCP framework with Auth0.",
   "type": "module",
   "scripts": {
-    "start": "tsx src/index.ts --project tsconfig.json"
+    "start": "tsx src/index.ts --project tsconfig.json",
+    "dev": "tsx src/index.ts --project tsconfig.json",
+    "build": "tsc",
+    "vercel:dev": "vercel dev",
+    "vercel:build": "vercel build"
   },
   "dependencies": {
     "@auth0/auth0-api-js": "^1.2.1",
